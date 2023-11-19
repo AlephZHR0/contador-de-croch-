@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contador</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FCE4EC;
+        }
+        #zero {
+            background-color: #4CAF50;
+        }
+        #zero:hover {
+            background-color: #45a049;
+        }
+        #zero:active {
+            background-color: #3e8e41;
+        }
+        .calc-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 10rem;
+            height: 10rem;
+            border: 1px solid #FF80AB;
+            border-radius: 1rem;
+            padding: 1rem;
+            background-color: #FFF3E0;
+        }
+        #visor {
+            width: 5rem;
+            height: 2rem;
+            text-align: right;
+            font-size: 1.5rem;
+            border: none;
+            background-color: #FFF;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            border: none;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            background-color: #FF80AB;
+            color: #FFF;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .button:hover {
+            background-color: #FF4081;
+        }
+        .button:active {
+            background-color: #F50057;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="column">
+        <button id="zero" class="button" onclick="resetValue()"></button>
+    </div>
+    <div class="calc-body">
+        <input id="visor" type="number" min="0" value="0">
+        <div class="row" id="inner-buttons">
+            <button class="button" onclick="subValue(5)">-5</button>
+            <button class="button" onclick="subValue(1)">-1</button>
+        </div>
+    </div>
+    <div class="column">
+        <button class="button" onclick="addValue(1)">+1</button>
+        <button class="button" onclick="addValue(5)">+5</button>
+        <button class="button" onclick="addValue(10)">+10</button>
+    </div>
+    <script>
+        function addValue(amount){
+            let visor = document.getElementById("visor");
+            visor.value = parseInt(visor.value) + amount;
+        }
+        function subValue(amount){
+            let visor = document.getElementById("visor");
+            if (visor.value > 0){
+                if (visor.value - amount < 0){
+                    visor.value = 0;
+                } else {
+                    visor.value = parseInt(visor.value) - amount;
+                }
+            }
+        }
+        function resetValue(){
+            let visor = document.getElementById("visor").value = 0;
+        }
+    </script>
+</body>
+</html>
